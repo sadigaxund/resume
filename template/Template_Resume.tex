@@ -199,7 +199,7 @@
     \item Researched and integrated \textbf{Apache Iceberg, Hive Metastore, Trino, PostgreSQL, and Apache Spark} into the in-house Fyrefuse platform, which let users run federated lakehouse queries over object storage without re-ingesting to the warehouse.
     \item Delivered \textbf{instantaneous} query results for multi-million-row tables by engineering a \textbf{viewport-aware caching} layer with bidirectional \textbf{Trino} prefetching.
     \item Replaced Redis with \textbf{PostgreSQL} as the cache backend to enable complex analytical querying (sort, filter, search), achieving sub-second ingestion for \textbf{10M+} records through \textbf{optimized bulk loading}.
-    \item Architected a reproducible data platform on \textbf{GCP} using \textbf{Terraform}, provisioning a distributed stack (\textbf{Spark}, \textbf{MinIO}, \textbf{PostgreSQL}) across multi-VM environments with automated \textbf{Kubernetes} deployments.
+    \item Standardized deployments for distributed data services (Spark, MinIO, PostgreSQL) by building CI/CD pipelines and Terraform modules, eliminating manual provisioning and ensuring zero configuration drift across dev, staging, and production.
 \end{itemize}
 \stackline{Stack}{Apache Iceberg, Trino, Hive Metastore, PostgreSQL, Redis, Docker, Kubernetes, Terraform, GCP}
 
