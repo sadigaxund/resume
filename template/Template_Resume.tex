@@ -39,6 +39,13 @@
 \definecolor{accent}{HTML}{1F4E79}
 \definecolor{subtle}{HTML}{555555}
 \definecolor{rule}{HTML}{BBBBBB}
+\definecolor{logobg}{HTML}{ECECEC}
+
+% Logo tile — light gray box so white-background logos stand out on the white page
+\newcommand{\logobox}[1]{%
+  {\setlength{\fboxsep}{2.5pt}%
+   \colorbox{logobg}{\includegraphics[width=7mm,height=7mm,keepaspectratio]{#1}}}%
+}
 
 \hypersetup{
     colorlinks=true,
@@ -73,7 +80,7 @@
   \noindent
   \begin{minipage}[c]{\bodyindent}
     \centering
-    \includegraphics[width=8mm,height=8mm,keepaspectratio]{#1}
+    \logobox{#1}
   \end{minipage}%
   \begin{minipage}[c]{\dimexpr\textwidth-\bodyindent}
     \textbf{\large #2}\hfill\textcolor{subtle}{#3}\\
@@ -104,7 +111,7 @@
   \noindent
   \begin{minipage}[c]{\bodyindent}
     \centering
-    \includegraphics[width=8mm,height=8mm,keepaspectratio]{#1}
+    \logobox{#1}
   \end{minipage}%
   \begin{minipage}[c]{\dimexpr\textwidth-\bodyindent}
     #2\hfill\textcolor{subtle}{#3}
@@ -126,7 +133,7 @@
   \noindent
   \begin{minipage}[c]{\bodyindent}
     \centering
-    \includegraphics[width=8mm,height=8mm,keepaspectratio]{#1}
+    \logobox{#1}
   \end{minipage}%
   \begin{minipage}[c]{\dimexpr\textwidth-\bodyindent}
     \textbf{#2}\hfill\textcolor{subtle}{#4}\\
