@@ -54,8 +54,8 @@
 % Unbreakable bold keyword — no hyphenation inside tech terms
 \newcommand{\tech}[1]{\textbf{\mbox{#1}}}
 
-% Labeled-bullet starter: all caps, slightly smaller, standard weight
-\newcommand{\bulletlabel}[1]{\footnotesize\MakeUppercase{#1}:}
+% Labeled-bullet starter: bold accent, normal case, colon
+\newcommand{\bulletlabel}[1]{\textbf{\textcolor{accent}{#1}:}}
 
 % Bold slate-gray keywords: \kw unbreakable (single token), \kwb breakable (phrase)
 \newcommand{\kw}[1]{\textcolor{keyword}{\tech{#1}}}
@@ -182,7 +182,7 @@
 %-------- HEADER --------
 \begin{center}
     {\huge \tech{\MakeUppercase{Sadig Akhund}}} \\[3pt]
-    {\Large \color{accent} Data Engineer} \\[6pt]
+    {\Large \color{accent} Software Engineer, Data} \\[6pt]
     {\small
         \faPhone\ +994 70 318 59 49 \quad
         \faEnvelope\ \href{mailto:sadigaxund@hotmail.com}{sadigaxund@hotmail.com} \quad
@@ -201,30 +201,30 @@
 \jobheading{icons/saudi_tourism.png}{Ministry of Tourism, Kingdom of Saudi Arabia}{Riyadh, Saudi Arabia}{Data Engineer (Remote)}{Jun 2023 -- Aug 2025}
 \begin{itemize}
     \small
-    \item {\footnotesize\textbf{\MakeUppercase{Data Ingestion \& Resilience}:}} Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
-    \item \textbf{Data Quality \& Governance:} Integrated \kwb{Kafka Schema Registry} to detect upstream schema drift early, backed by automated quality checks to guarantee pristine data delivery into the \kwb{MS SQL Server} warehouse.
-    \item Data Modeling \& Scale: Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 business-critical tables}, utilizing dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)} for national tourism analytics.
-    \item \textbf{\textcolor{accent}{Vendor SLA Management:}} Managed a shared \kw{Snowflake} environment used by a third-party data broker, continuously auditing the incoming data against Ministry SLAs to ensure timely delivery, completeness, and strict schema adherence.
+    \item \bulletlabel{Data Ingestion \& Resilience} Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
+    \item \bulletlabel{Data Quality \& Governance} Integrated \kwb{Kafka Schema Registry} to detect upstream schema drift early, backed by automated quality checks to guarantee pristine data delivery into the \kwb{MS SQL Server} warehouse.
+    \item \bulletlabel{Data Modeling \& Scale} Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 business-critical tables}, utilizing dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)} for national tourism analytics.
+    \item \bulletlabel{Vendor SLA Management} Managed a shared \kw{Snowflake} environment used by a third-party data broker, continuously auditing the incoming data against Ministry SLAs to ensure timely delivery, completeness, and strict schema adherence.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Kafka, MS SQL Server, Snowflake, RHEL}
 
 \jobheading{icons/KDM.jpg}{KDM Force}{Rome, Italy}{Data Platform Engineer (Remote)}{Jun 2022 -- Nov 2025}
 \begin{itemize}
     \small
-    \item Expanded platform access to data analysts by integrating a federated lakehouse stack (\tech{Trino}, \tech{Iceberg}, \tech{Spark}), allowing them to run SQL directly on object storage and bypass slow warehouse ingestion.
-    \item Delivered \tech{instantaneous} query results for multi-million-row tables by engineering a \tech{viewport-aware caching} layer with bidirectional \tech{Trino} prefetching.
-    \item Replaced Redis with \tech{PostgreSQL} as the cache backend to enable complex analytical querying (sort, filter, search), achieving sub-second ingestion for \tech{10M+} records through \tech{optimized bulk loading}.
-    \item Standardized deployments for distributed data services (\tech{Spark}, \tech{MinIO}, \tech{PostgreSQL}) with \tech{CI/CD} pipelines and \tech{Terraform} modules, removing manual provisioning and configuration drift across dev, staging, and production.
+    \item Expanded platform access to data analysts by integrating a federated lakehouse stack (\kw{Trino}, \kw{Iceberg}, \kw{Spark}), allowing them to run SQL directly on object storage and bypass slow warehouse ingestion.
+    \item Delivered \kw{instantaneous} query results for multi-million-row tables by engineering a \kwb{viewport-aware caching} layer with bidirectional \kw{Trino} prefetching.
+    \item Replaced Redis with \kw{PostgreSQL} as the cache backend to enable complex analytical querying (sort, filter, search), achieving sub-second ingestion for \kw{10M+} records through \kwb{optimized bulk loading}.
+    \item Standardized deployments for distributed data services (\kw{Spark}, \kw{MinIO}, \kw{PostgreSQL}) with \kw{CI/CD} pipelines and \kw{Terraform} modules, removing manual provisioning and configuration drift across dev, staging, and production.
 \end{itemize}
 \stackline{Stack}{Apache Iceberg, Trino, Hive Metastore, PostgreSQL, Redis, Docker, Kubernetes, Terraform, GCP}
 
 \jobheading{icons/unibank.png}{Unibank}{Baku, Azerbaijan}{Data Engineer (Intern)}{Oct 2021 -- May 2022}
 \begin{itemize}
     \small
-    \item Studied and documented the bank's production \tech{push-notification telemetry pipeline} (mobile app $\rightarrow$ \tech{Apache NiFi} ingestion $\rightarrow$ \tech{Apache Spark} enrichment $\rightarrow$ \tech{ELK stack}) and surfaced schema gaps and partition hotspots to the platform team.
+    \item Studied and documented the bank's production \kwb{push-notification telemetry pipeline} (mobile app $\rightarrow$ \kwb{Apache NiFi} ingestion $\rightarrow$ \kwb{Apache Spark} enrichment $\rightarrow$ \kwb{ELK stack}) and surfaced schema gaps and partition hotspots to the platform team.
     \item Refactored middleware log schema feeding Logstash, cutting per-event payload size and standardizing the format consumed by Spark enrichment jobs, which reduced storage cost and improved Kibana query latency.
-    \item Built a \tech{FastAPI} service that exposed enriched notification metrics to internal stakeholders, replacing manual ad-hoc Elasticsearch queries.
-    \item Benchmarked \tech{InfluxDB, Snowflake, and MongoDB} as candidate stores for time-series and document workloads and wrote a feasibility report that informed the bank's analytics roadmap.
+    \item Built a \kw{FastAPI} service that exposed enriched notification metrics to internal stakeholders, replacing manual ad-hoc Elasticsearch queries.
+    \item Benchmarked \kwb{InfluxDB, Snowflake, and MongoDB} as candidate stores for time-series and document workloads and wrote a feasibility report that informed the bank's analytics roadmap.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Apache NiFi, Elasticsearch, Logstash, Kibana, Python, FastAPI, MongoDB, InfluxDB, Snowflake}
 
@@ -244,7 +244,7 @@
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Open-sourced \tech{Aqueduct}: a tool that lets data teams describe pipelines in simple YAML files instead of writing code, and run the same blueprint on \tech{Apache Spark or DuckDB}. When a pipeline fails, a built-in \tech{AI agent} diagnoses the cause and proposes a reviewable, Git-diffable fix. The project also ships compile-time \tech{column-level data lineage}, an \tech{Apache Airflow} integration, and a local observability dashboard for run and healing history.
+    \small A framework that enables data teams to define pipelines via simple \kwb{YAML blueprints} and execute them seamlessly across \kwb{Apache Spark or DuckDB}. Upon pipeline failure, an integrated, deterministic harness guides a pluggable \kw{LLM} to diagnose the root cause and generate a reviewable, Git-diffable fix. The project includes compile-time \kwb{column-level data lineage}, \kwb{Apache Airflow} integration, and native observability baked into every execution and healing cycle.
 \end{minipage}\par
 
 \iconentry{icons/mandible.png}{\textbf{Mandible} \textcolor{subtle}{$\cdot$ A Universal TUI Manual Viewer for CLI Tools in Rust}}{\textcolor{accent}{\faStar}\ 50+ stars}
