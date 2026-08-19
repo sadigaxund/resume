@@ -201,10 +201,10 @@
 \jobheading{icons/saudi_tourism.png}{Ministry of Tourism, Kingdom of Saudi Arabia}{Riyadh, Saudi Arabia}{Data Engineer (Remote)}{Jun 2023 -- Aug 2025}
 \begin{itemize}
     \small
-    \item \bulletlabel{Data Ingestion \& Resilience} Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
-    \item \bulletlabel{Data Quality \& Governance} Integrated \kwb{Kafka Schema Registry} to detect upstream schema drift early, backed by automated quality checks to guarantee pristine data delivery into the \kwb{MS SQL Server} warehouse.
-    \item \bulletlabel{Data Modeling \& Scale} Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 business-critical tables}, utilizing dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)} for national tourism analytics.
-    \item \bulletlabel{Vendor SLA Management} Managed a shared \kw{Snowflake} environment used by a third-party data broker, continuously auditing the incoming data against Ministry SLAs to ensure timely delivery, completeness, and strict schema adherence.
+    \item {\footnotesize\textbf{\MakeUppercase{Data Ingestion \& Resilience}:}} Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
+    \item \textbf{Data Quality \& Governance:} Integrated \kwb{Kafka Schema Registry} to detect upstream schema drift early, backed by automated quality checks to guarantee pristine data delivery into the \kwb{MS SQL Server} warehouse.
+    \item Data Modeling \& Scale: Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 business-critical tables}, utilizing dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)} for national tourism analytics.
+    \item \textbf{\textcolor{accent}{Vendor SLA Management:}} Managed a shared \kw{Snowflake} environment used by a third-party data broker, continuously auditing the incoming data against Ministry SLAs to ensure timely delivery, completeness, and strict schema adherence.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Kafka, MS SQL Server, Snowflake, RHEL}
 
