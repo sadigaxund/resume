@@ -26,6 +26,9 @@
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{needspace}
+\usepackage{microtype}
+
+\emergencystretch=1.5em
 
 \geometry{
     letterpaper,
@@ -46,6 +49,9 @@
   {\setlength{\fboxsep}{2.5pt}%
    \colorbox{logobg}{\includegraphics[width=7mm,height=7mm,keepaspectratio]{#1}}}%
 }
+
+% Unbreakable bold keyword — no hyphenation inside tech terms
+\newcommand{\tech}[1]{\textbf{\mbox{#1}}}
 
 \hypersetup{
     colorlinks=true,
@@ -167,7 +173,7 @@
 
 %-------- HEADER --------
 \begin{center}
-    {\huge \textbf{\MakeUppercase{Sadig Akhund}}} \\[3pt]
+    {\huge \tech{\MakeUppercase{Sadig Akhund}}} \\[3pt]
     {\Large \color{accent} Data Engineer} \\[6pt]
     {\small
         \faPhone\ +994 70 318 59 49 \quad
@@ -179,7 +185,7 @@
 
 %-------- SUMMARY (no header — flows from contact block) --------
 \vspace{6pt}
-{\small Data Engineer with 3+ years across platform and delivery work. Integrated \textbf{Apache Spark, Iceberg, and Trino} into an in-house orchestration platform and shipped lakehouse pipelines that process tens of millions of records for government and financial clients.\par}
+{\small Data Engineer with 3+ years across platform and delivery work. Integrated \tech{Apache Spark, Iceberg, and Trino} into an in-house orchestration platform and shipped lakehouse pipelines that process tens of millions of records for government and financial clients.\par}
 
 %-------- EXPERIENCE --------
 \section{Experience}
@@ -187,29 +193,29 @@
 \jobheading{icons/saudi_tourism.png}{Ministry of Tourism, Kingdom of Saudi Arabia}{Riyadh, Saudi Arabia}{Data Engineer (Remote)}{Jun 2023 -- Aug 2025}
 \begin{itemize}
     \small
-    \item Standardized ingestion for unreliable OTA providers with \textbf{CDC-style incremental extraction} feeding \textbf{Spark} pipelines (via Fyrefuse) into the \textbf{MS SQL Server} warehouse, tracking schema evolution in \textbf{Kafka Schema Registry} to catch drift early, backed by automated data-quality checks, rate-limit backoff, and dead-letter queues that eliminated manual intervention on failed loads.
+    \item Standardized ingestion for unreliable OTA providers with \tech{CDC-style incremental extraction} feeding \tech{Spark} pipelines (via Fyrefuse) into the \tech{MS SQL Server} warehouse, tracking schema evolution in \tech{Kafka Schema Registry} to catch drift early, backed by automated data-quality checks, rate-limit backoff, and dead-letter queues that eliminated manual intervention on failed loads.
     \item Modeled the warehouse schema for \textbf{80M+ customer reviews} and multi-year listing metadata across \textbf{18 business-critical tables}, using dimensional modeling and slowly-changing-dimension patterns to support national tourism analytics.
-    \item Owned the \textbf{Snowflake} account brokering the data-delivery SLA between the Ministry and its upstream data broker, monitoring ingestion timeliness and verifying completeness and freshness against contract terms.
+    \item Owned the \tech{Snowflake} account brokering the data-delivery SLA between the Ministry and its upstream data broker, monitoring ingestion timeliness and verifying completeness and freshness against contract terms.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Kafka, MS SQL Server, Snowflake, RHEL}
 
 \jobheading{icons/KDM.jpg}{KDM Force}{Rome, Italy}{Data Platform Engineer (Remote)}{Jun 2022 -- Nov 2025}
 \begin{itemize}
     \small
-    \item Expanded platform access to data analysts by integrating a federated lakehouse stack (\textbf{Trino}, \textbf{Iceberg}, \textbf{Spark}), allowing them to run SQL directly on object storage and bypass slow warehouse ingestion.
-    \item Delivered \textbf{instantaneous} query results for multi-million-row tables by engineering a \textbf{viewport-aware caching} layer with bidirectional \textbf{Trino} prefetching.
-    \item Replaced Redis with \textbf{PostgreSQL} as the cache backend to enable complex analytical querying (sort, filter, search), achieving sub-second ingestion for \textbf{10M+} records through \textbf{optimized bulk loading}.
-    \item Standardized deployments for distributed data services (\textbf{Spark}, \textbf{MinIO}, \textbf{PostgreSQL}) by building \textbf{CI/CD} pipelines and \textbf{Terraform} modules, eliminating manual provisioning and ensuring zero configuration drift across dev, staging, and production.
+    \item Expanded platform access to data analysts by integrating a federated lakehouse stack (\tech{Trino}, \tech{Iceberg}, \tech{Spark}), allowing them to run SQL directly on object storage and bypass slow warehouse ingestion.
+    \item Delivered \tech{instantaneous} query results for multi-million-row tables by engineering a \tech{viewport-aware caching} layer with bidirectional \tech{Trino} prefetching.
+    \item Replaced Redis with \tech{PostgreSQL} as the cache backend to enable complex analytical querying (sort, filter, search), achieving sub-second ingestion for \tech{10M+} records through \tech{optimized bulk loading}.
+    \item Standardized deployments for distributed data services (\tech{Spark}, \tech{MinIO}, \tech{PostgreSQL}) with \tech{CI/CD} pipelines and \tech{Terraform} modules, removing manual provisioning and configuration drift across dev, staging, and production.
 \end{itemize}
 \stackline{Stack}{Apache Iceberg, Trino, Hive Metastore, PostgreSQL, Redis, Docker, Kubernetes, Terraform, GCP}
 
 \jobheading{icons/unibank.png}{Unibank}{Baku, Azerbaijan}{Data Engineer (Intern)}{Oct 2021 -- May 2022}
 \begin{itemize}
     \small
-    \item Studied and documented the bank's production \textbf{push-notification telemetry pipeline} (mobile app $\rightarrow$ \textbf{Apache NiFi} ingestion $\rightarrow$ \textbf{Apache Spark} enrichment $\rightarrow$ \textbf{ELK stack}) and surfaced schema gaps and partition hotspots to the platform team.
+    \item Studied and documented the bank's production \tech{push-notification telemetry pipeline} (mobile app $\rightarrow$ \tech{Apache NiFi} ingestion $\rightarrow$ \tech{Apache Spark} enrichment $\rightarrow$ \tech{ELK stack}) and surfaced schema gaps and partition hotspots to the platform team.
     \item Refactored middleware log schema feeding Logstash, cutting per-event payload size and standardizing the format consumed by Spark enrichment jobs, which reduced storage cost and improved Kibana query latency.
-    \item Built a \textbf{FastAPI} service that exposed enriched notification metrics to internal stakeholders, replacing manual ad-hoc Elasticsearch queries.
-    \item Benchmarked \textbf{InfluxDB, Snowflake, and MongoDB} as candidate stores for time-series and document workloads and wrote a feasibility report that informed the bank's analytics roadmap.
+    \item Built a \tech{FastAPI} service that exposed enriched notification metrics to internal stakeholders, replacing manual ad-hoc Elasticsearch queries.
+    \item Benchmarked \tech{InfluxDB, Snowflake, and MongoDB} as candidate stores for time-series and document workloads and wrote a feasibility report that informed the bank's analytics roadmap.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Apache NiFi, Elasticsearch, Logstash, Kibana, Python, FastAPI, MongoDB, InfluxDB, Snowflake}
 
@@ -225,20 +231,20 @@
 %-------- PROJECTS --------
 \section{Projects}
 
-\iconentry{icons/aqueduct.png}{\textbf{Aqueduct} \textcolor{subtle}{$\cdot$ Self-healing declarative data pipelines (Spark/DuckDB)} \quad \href{https://github.com/sadigaxund/Aqueduct}{\faGithub\ GitHub}}{\href{https://github.com/sadigaxund/Aqueduct}{\textcolor{accent}{\faStar}\ 10+ stars}}
+\iconentry{icons/aqueduct.png}{\tech{Aqueduct} \textcolor{subtle}{$\cdot$ Self-healing declarative data pipelines (Spark/DuckDB)} \quad \href{https://github.com/sadigaxund/Aqueduct}{\faGithub\ GitHub}}{\href{https://github.com/sadigaxund/Aqueduct}{\textcolor{accent}{\faStar}\ 10+ stars}}
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Open-sourced \textbf{Aqueduct}: a tool that lets data teams describe pipelines in simple YAML files instead of writing code, and run the same blueprint on \textbf{Apache Spark or DuckDB}. When a pipeline fails, a built-in \textbf{AI agent} diagnoses the cause and proposes a reviewable, Git-diffable fix. The project also ships compile-time \textbf{column-level data lineage}, an \textbf{Apache Airflow} integration, and a local observability dashboard for run and healing history.
+    \small Open-sourced \tech{Aqueduct}: a tool that lets data teams describe pipelines in simple YAML files instead of writing code, and run the same blueprint on \tech{Apache Spark or DuckDB}. When a pipeline fails, a built-in \tech{AI agent} diagnoses the cause and proposes a reviewable, Git-diffable fix. The project also ships compile-time \tech{column-level data lineage}, an \tech{Apache Airflow} integration, and a local observability dashboard for run and healing history.
 \end{minipage}\par
 
-\iconentry{icons/mandible.png}{\textbf{Mandible}}{\textcolor{accent}{\faStar}\ 50+ stars}
+\iconentry{icons/mandible.png}{\tech{Mandible}}{\textcolor{accent}{\faStar}\ 50+ stars}
 
 %-------- CERTIFICATIONS --------
 \needspace{5\baselineskip}
 \section{Certifications}
 
-\iconentry{icons/google.png}{\textbf{Google Data Analytics Professional Certificate} \textcolor{subtle}{$\cdot$} \href{https://www.credly.com/badges/de618cee-0460-4d61-971b-2813931eb9c0/public_url}{Verify on Credly}}{Apr 2022}
+\iconentry{icons/google.png}{\tech{Google Data Analytics Professional Certificate} \textcolor{subtle}{$\cdot$} \href{https://www.credly.com/badges/de618cee-0460-4d61-971b-2813931eb9c0/public_url}{Verify on Credly}}{Apr 2022}
 \vspace{4pt}
 
 
