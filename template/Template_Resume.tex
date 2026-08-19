@@ -218,13 +218,10 @@
 %-------- PROJECTS --------
 \section{Projects}
 
-\iconentry{icons/aqueduct.png}{\textbf{Aqueduct} \textcolor{subtle}{$\cdot$ Self-healing declarative data pipelines (Spark/DuckDB)} \quad \href{https://github.com/sadigaxund/Aqueduct}{\faGithub\ GitHub}}{Feb 2026 -- Present}
-\begin{itemize}
-    \small
-    \item Designed and shipped a \textbf{declarative pipeline engine}: version-controlled YAML Blueprints compiled to run on \textbf{Apache Spark or DuckDB} from the same file, replacing hand-written PySpark. Released to PyPI as \href{https://pypi.org/project/aqueduct-core/}{\texttt{aqueduct-core}}.
-    \item Built an \textbf{LLM self-healing agent} that diagnoses failed pipeline runs and proposes a structured, Git-diffable patch, gated through guardrail, lineage, and sandbox checks before it ever touches a pipeline; repeat failures heal from memory with zero LLM calls.
-    \item Added \textbf{Apache Airflow integration}, compile-time \textbf{column-level data lineage}, and a queryable observability store with a local dashboard for fleet-wide run and healing history.
-\end{itemize}
+\iconentry{icons/mandible.png}{\textbf{Aqueduct} \textcolor{subtle}{$\cdot$ Self-healing declarative data pipelines (Spark/DuckDB)} \quad \href{https://github.com/sadigaxund/Aqueduct}{\faGithub\ GitHub}}{\href{https://github.com/sadigaxund/Aqueduct}{\textcolor{accent}{\faStar}\ 50+ stars}}
+{\small
+    Open-sourced \textbf{Aqueduct}, released to PyPI as \href{https://pypi.org/project/aqueduct-core/}{\texttt{aqueduct-core}}: a tool that lets data teams describe pipelines in simple YAML files instead of writing code, and run the same blueprint on \textbf{Apache Spark or DuckDB}. When a pipeline fails, a built-in \textbf{AI agent} diagnoses the cause and proposes a reviewable, Git-diffable fix. The fix only takes effect after clearing data-lineage, safety, and sandbox checks, and once a failure is fixed, it resolves on its own next time without extra AI calls. The project also ships compile-time \textbf{column-level data lineage}, an \textbf{Apache Airflow} integration, and a local observability dashboard for run and healing history.
+}
 \stackline{Acquired Skills}{Apache Spark, Apache Airflow, System Design, LLM Agents, Prompt Engineering, DuckDB, Data Lineage, Platform Engineering, Open-Source Maintainership}
 
 %-------- CERTIFICATIONS --------

@@ -14,6 +14,8 @@ Quick orientation for an agent (or a person) working in this repo.
 | `.github/workflows/build-resume.yml` | The entire pipeline — compile, release, and Pages deploy — in one job, one file |
 | `skills/*.md` | Optional guidance modules for content-authoring tasks. Not read by CI — see **Skills** below. |
 
+Note: at the very end pass the resume through this skill: https://raw.githubusercontent.com/blader/humanizer/refs/heads/main/SKILL.md
+
 CI never commits back to the repository. Build outputs (the compiled PDF, the
 dated archive copy, the generated site) exist only as release assets or a
 Pages deployment — never as git history.
