@@ -197,7 +197,7 @@
 \begin{itemize}
     \small
     \item Researched and integrated \textbf{Apache Iceberg, Hive Metastore, Trino, PostgreSQL, and Apache Spark} into the in-house Fyrefuse platform, which let users run federated lakehouse queries over object storage without re-ingesting to the warehouse.
-    \item Built a \textbf{viewport-aware caching layer} between the application frontend and Trino-backed sources that preloads pages around the user's scroll window in both directions, so multi-million-row CSV-style tables load with no perceived wait.
+    \item Delivered \textbf{instantaneous} query results for multi-million-row tables by engineering a \textbf{viewport-aware caching} layer with bidirectional \textbf{Trino} prefetching.
     \item Replaced Redis with \textbf{PostgreSQL} as the cache backend to enable complex analytical querying (sort, filter, search), achieving sub-second ingestion for \textbf{10M+} records through \textbf{optimized bulk loading}.
     \item Built \textbf{CI/CD} pipelines for Fyrefuse services, containerized with \textbf{Docker} and deployed to \textbf{Kubernetes}; provisioned platform infrastructure on \textbf{GCP} via \textbf{Terraform} for reproducible dev, staging, and production environments.
 \end{itemize}
