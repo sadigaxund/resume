@@ -177,12 +177,8 @@ inline. The download button still links directly to the GitHub Releases URL.
 Established style rules for resume content. Follow these when adding or
 editing entries so new text matches the existing layout.
 
-**Bold keyword styling** (the visual hierarchy between labels and keywords):
+**Bold keyword styling** (the visual hierarchy of keywords in bullet text):
 
-- `\bulletlabel{Label}` — starts a labeled bullet (e.g. the Ministry
-  entry's "Data Ingestion & Resilience:"). Renders **bold, accent-colored
-  (#1F4E79), normal case**, followed by a colon. Use for any
-  label: description bullet.
 - `\kw{single token}` — bold **slate-gray (#2F4F4F)** keyword, wrapped in
   `\mbox` so it can never hyphenate or split across lines (kills "Ter-raform"
   style breaks). Use for single-word tech terms: `\kw{Spark}`, `\kw{Trino}`.
@@ -213,10 +209,11 @@ editing entries so new text matches the existing layout.
 
 **History (why these exist):** keyword hyphenation ("Ter-raform") and a
 dangling syllable widow on the final line of a bullet looked bad; `\kw` +
-`\emergencystretch` fixed it. The label styles were compared in four
-variants (all-caps small, plain bold, plain text, accent bold) and the
-accent-bold `\bulletlabel` won. The slate-gray keyword color was chosen to
-recede behind the accent labels.
+`\emergencystretch` fixed it. Labeled sentence starters ("Data Ingestion &
+Resilience:", etc.) were tried in four styles (all-caps small, plain bold,
+plain text, accent bold) and then removed entirely — bullets now start
+directly with the description. The slate-gray keyword color was chosen to
+recede behind the bold text hierarchy.
 
 ## Adding a new variant
 

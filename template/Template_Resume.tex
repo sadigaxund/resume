@@ -54,9 +54,6 @@
 % Unbreakable bold keyword — no hyphenation inside tech terms
 \newcommand{\tech}[1]{\textbf{\mbox{#1}}}
 
-% Labeled-bullet starter: bold accent, normal case, colon
-\newcommand{\bulletlabel}[1]{\textbf{\textcolor{accent}{#1}:}}
-
 % Bold slate-gray keywords: \kw unbreakable (single token), \kwb breakable (phrase)
 \newcommand{\kw}[1]{\textcolor{keyword}{\tech{#1}}}
 \newcommand{\kwb}[1]{\textcolor{keyword}{\textbf{#1}}}
@@ -201,10 +198,10 @@
 \jobheading{icons/saudi_tourism.png}{Ministry of Tourism, Kingdom of Saudi Arabia}{Riyadh, Saudi Arabia}{Data Engineer (Remote)}{Jun 2023 -- Aug 2025}
 \begin{itemize}
     \small
-    \item \bulletlabel{Data Ingestion \& Resilience} Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
-    \item \bulletlabel{Data Quality \& Governance} Integrated \kwb{Kafka Schema Registry} to detect upstream schema drift early, backed by automated quality checks to guarantee pristine data delivery into the \kwb{MS SQL Server} warehouse.
-    \item \bulletlabel{Data Modeling \& Scale} Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 business-critical tables}, utilizing dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)} for national tourism analytics.
-    \item \bulletlabel{Vendor SLA Management} Managed a shared \kw{Snowflake} environment used by a third-party data broker, continuously auditing the incoming data against Ministry SLAs to ensure timely delivery, completeness, and strict schema adherence.
+    \item Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
+    \item Integrated \kwb{Kafka Schema Registry} to detect upstream schema drift early, backed by automated quality checks to guarantee pristine data delivery into the \kwb{MS SQL Server} warehouse.
+    \item Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 business-critical tables}, utilizing dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)} for national tourism analytics.
+    \item Managed a shared \kw{Snowflake} environment used by a third-party data broker, continuously auditing the incoming data against Ministry SLAs to ensure timely delivery, completeness, and strict schema adherence.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Kafka, MS SQL Server, Snowflake, RHEL}
 
@@ -247,7 +244,7 @@
     \small A framework that enables data teams to define pipelines via simple \kwb{YAML blueprints} and execute them seamlessly across \kwb{Apache Spark or DuckDB}. Upon pipeline failure, an integrated, deterministic harness guides a pluggable \kw{LLM} to diagnose the root cause and generate a reviewable, Git-diffable fix. The project includes compile-time \kwb{column-level data lineage}, \kwb{Apache Airflow} integration, and native observability baked into every execution and healing cycle.
 \end{minipage}\par
 
-\iconentry{icons/mandible.png}{\textbf{Mandible} \textcolor{subtle}{$\cdot$ A Universal TUI Manual Viewer for CLI Tools in Rust}}{\textcolor{accent}{\faStar}\ 50+ stars}
+\iconentry{icons/mandible.png}{\textbf{Mandible} \textcolor{subtle}{$\cdot$ A Universal TUI Manual Viewer for CLI Tools in Rust} \quad \href{https://github.com/AS-FOSS/mandible}{\faGithub\ GitHub}}{\href{https://github.com/AS-FOSS/mandible}{\textcolor{accent}{\faStar}\ 50+ stars}}
 
 %-------- CERTIFICATIONS --------
 \needspace{5\baselineskip}
