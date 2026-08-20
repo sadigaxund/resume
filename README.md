@@ -3,68 +3,67 @@
 </p>
 
 <p align="center">
-  <strong>Fork it. Push a <code>.tex</code>. Get versioned PDFs + a live viewer — automatically.</strong>
+  <strong>A tiny release pipeline for your resume — push a change, keep every version.</strong>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/LaTeX-XeLaTeX-008080?style=flat-square&logo=latex&logoColor=white" alt="XeLaTeX" />
   <img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" alt="GitHub Actions" />
   <img src="https://img.shields.io/badge/Pages-GitHub%20Pages-222?style=flat-square&logo=github&logoColor=white" alt="GitHub Pages" />
-  <img src="https://img.shields.io/github/stars/sadigaxund/git-resume?style=flat-square" alt="Stars" />
-  <img src="https://img.shields.io/github/forks/sadigaxund/git-resume?style=flat-square" alt="Forks" />
+  <img src="https://img.shields.io/github/stars/AS-FOSS/git-resume?style=flat-square" alt="Stars" />
+  <img src="https://img.shields.io/github/forks/AS-FOSS/git-resume?style=flat-square" alt="Forks" />
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
 </p>
 
 # git-resume
 
-Fork it, edit and generate your resume from `template/`, push. GitHub Actions compiles it, cuts a release with the PDF attached, and updates a hosted page where you can browse every version you've pushed. See [Demo](https://www.youtube.com/watch?v=CiZllBuUCZ4).
+git-resume is a small release pipeline for your resume. You edit a LaTeX file and push; CI compiles it, publishes a `latest-<variant>` release plus dated snapshots, and rebuilds a hosted viewer, so every version you've pushed stays one click away. You write the resume. The repo handles the workflow.
 
-## Setup
+```
+git push → CI compile → release (latest + dated tags) → live viewer
+```
 
-1. Fork and clone this repo
-2. Replace the `.tex` file in `template/` with your own, and drop any logos into `template/icons/`
+Live demo: [as-foss.github.io/git-resume](https://as-foss.github.io/git-resume/) · [demo video](https://www.youtube.com/watch?v=CiZllBuUCZ4)
+
+## Quick start
+
+1. Hit **Use this template** or fork, then clone your copy. Want it private? See [Public or private?](#public-or-private).
+2. Put your resume in `template/`: replace the `.tex` and drop any logos into `template/icons/`.
 3. Edit `template/resume.yml`:
    ```yaml
    variant: general
    label: General
    author: "Your Name"
    template: "YourResume.tex"
-   output: "YourName_Resume"   # optional, defaults to the .tex filename
+   output: "YourName_Resume"   # optional
    ```
-4. Set your name inside the `.tex` file itself — it's hardcoded in the header, so `resume.yml`'s `author` field won't change it for you
-5. Push to `main`
+4. Set your name in the `.tex` file. It's hardcoded in the header; `resume.yml` won't change it.
+5. Push to `main`.
 
-> NOTE: Turn on Pages once (Settings → Pages → Source: GitHub Actions) — this is a one-time manual step, **per repo**. Forks don't inherit this setting; each fork owner must enable it themselves.
+> [!NOTE]
+> Enable Pages once per repo: Settings → Pages → Source: GitHub Actions. Your copy won't have it on by default.
 
-## What happens on push
+## Privacy
 
-One workflow handles all of it:
+Forking keeps you in the fork network, so you can pull updates from this repo. For a private copy, use **Use this template** instead. Two trade-offs: you leave the fork network (no more updates from this repo), and GitHub Pages needs a paid plan (Pro or higher) on private repositories.
 
-- Compiles `template/*.tex` with XeLaTeX (needed for the bundled fonts — plain pdflatex won't render them)
-- Publishes the PDF as a release: a `latest-<variant>` tag that always points at the newest build, plus a dated `resume-<variant>-YYYY-MM-DD` tag whenever the content actually changes
-- Rebuilds the GitHub Pages viewer, which reads the release list and lets you flip between every version you've published
+## Variants
 
-> See it in action: [sadigaxund.github.io/git-resume](https://sadigaxund.github.io/git-resume/) — two-level profile/version selector, renders PDFs inline in your browser.
-
-Nothing is committed back to the repo. The PDF and the site are build output, not history you have to manage by hand.
-
-## Different resumes for different applications
-
-`main` is your default resume. If you want a different version for a specific application — say a data-engineering-flavored resume for one company — create a branch named `resume/<something>`, e.g. `resume/facebook-de`, with its own `resume.yml`:
+One branch, one resume. `main` is your default; `resume/<role>` is a tailored version for one application. Each branch carries its own `resume.yml`:
 
 ```yaml
 variant: facebook-de
-label: Facebook — Data Engineer
+label: Facebook Data Engineer
 author: "Your Name"
 template: "Resume.tex"
 output: "YourName_Facebook_DE"
 ```
 
-Push it, and it builds and releases on its own — separate tags, separate entry in the viewer's profile dropdown. Editing one variant never touches another.
+Push the branch and it builds on its own, with its own tags and its own entry in the viewer. Editing one variant never touches another.
 
 ## Editing with AI
 
-You don't have to write LaTeX by hand. Point a free coding agent like [opencode](https://opencode.ai) at the repo and ask it to update your resume. Check `skills/` first — it holds optional writing guidance (ATS-friendliness, tone, this template's macros) meant to be read before any content gets touched, by a human or an agent. Swap in your own style guide there if you want different rules.
+You don't have to write LaTeX by hand. Point a free coding agent like [opencode](https://opencode.ai) at the repo and ask it to update your resume. Read `skills/` first: it holds optional writing guidance (ATS-friendliness, tone, template macros) for humans and agents alike. Swap in your own style guide if you want different rules.
 
 ## Layout
 
@@ -78,7 +77,3 @@ template/
 skills/           optional content-writing guidance, not read by CI
 .github/workflows/build-resume.yml   the whole pipeline
 ```
-
-## License
-
-Fork it and use it for your own resume.
