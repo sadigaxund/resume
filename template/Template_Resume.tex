@@ -195,7 +195,7 @@
 %-------- EXPERIENCE --------
 \section{Experience}
 
-\jobheading{icons/saudi_tourism.png}{Ministry of Tourism, Kingdom of Saudi Arabia}{Riyadh, Saudi Arabia}{Data Engineer (Remote)}{Jun 2023 -- Aug 2025}
+\jobheading{icons/saudi_tourism.png}{Ministry of Tourism}{Riyadh, Saudi Arabia}{Data Engineer (Remote)}{Jun 2023 -- Aug 2025}
 \begin{itemize}
     \small
     \item Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) to extract data from 10+ volatile OTA providers, implementing rate-limit backoffs and dead-letter queues to prevent pipeline failures and handle API unreliability.
@@ -218,10 +218,8 @@
 \jobheading{icons/unibank.png}{Unibank}{Baku, Azerbaijan}{Data Engineer (Intern)}{Oct 2021 -- May 2022}
 \begin{itemize}
     \small
-    \item Studied and documented the bank's production \kwb{push-notification telemetry pipeline} (mobile app $\rightarrow$ \kwb{Apache NiFi} ingestion $\rightarrow$ \kwb{Apache Spark} enrichment $\rightarrow$ \kwb{ELK stack}) and surfaced schema gaps and partition hotspots to the platform team.
-    \item Refactored middleware log schema feeding Logstash, cutting per-event payload size and standardizing the format consumed by Spark enrichment jobs, which reduced storage cost and improved Kibana query latency.
-    \item Built a \kw{FastAPI} service that exposed enriched notification metrics to internal stakeholders, replacing manual ad-hoc Elasticsearch queries.
-    \item Benchmarked \kwb{InfluxDB, Snowflake, and MongoDB} as candidate stores for time-series and document workloads and wrote a feasibility report that informed the bank's analytics roadmap.
+    \item Documented the production telemetry pipeline (NiFi, Spark, ELK) and assisted the platform team in refactoring middleware log schemas to optimize Kibana queries.
+    \item Built an internal FastAPI metrics service and delivered a benchmarking Proof-of-Concept (InfluxDB, Snowflake, MongoDB) to assist with future architecture planning.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Apache NiFi, Elasticsearch, Logstash, Kibana, Python, FastAPI, MongoDB, InfluxDB, Snowflake}
 
