@@ -243,21 +243,21 @@
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Declarative \kwb{YAML blueprints} compile to \kw{Apache Spark} or \kw{DuckDB}, including mixed-engine pipelines with automatic handoffs and compile-time \kwb{column-level lineage}. When a run fails, an \kw{LLM} agent traces the root cause through lineage and proposes a structured patch (never code) that must clear guardrail, compile, sandbox-replay, and regression gates; \texttt{aqueduct patch pr} turns an accepted fix into a pull request for human review. Repeat failures heal from a signature cache without a single model call. Solo-built, 800+ commits, \texttt{pip install aqueduct-core}, Apache-2.0.
+    \small Declarative \kwb{YAML blueprints} compile to \kw{Apache Spark} or \kw{DuckDB}, including mixed-engine pipelines with automatic handoffs and compile-time \kwb{column-level lineage}. When a run fails, an \kw{LLM} agent traces the root cause through lineage and proposes a structured patch (never code) that must clear guardrail, compile, sandbox-replay, and regression gates; \texttt{aqueduct patch pr} turns an accepted fix into a pull request for human review. Repeat failures heal from a signature cache without a single model call. Solo-built and published on PyPI.
 \end{minipage}\par
 
 \iconentry{icons/mandible.png}{\tech{Mandible} \textcolor{subtle}{$\cdot$ TUI manual viewer for CLI tools (Rust)}}{\href{https://github.com/AS-FOSS/mandible}{github.com/AS-FOSS/mandible} \textcolor{subtle}{$\cdot$ 2026}}
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Renders any installed CLI's commands, flags, and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework generated a tool's output (\kw{clap}, \kw{cobra}, \kw{argparse}, \kw{click}) and applies that grammar, scoring parse coverage against every executable on \texttt{PATH} in CI. \faStar\ 40 on GitHub, \texttt{cargo install mandible}.
+    \small Renders any installed CLI's commands, flags, and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework generated a tool's output (\kw{clap}, \kw{cobra}, \kw{argparse}, \kw{click}) and applies that grammar, scoring parse coverage against every executable on \texttt{PATH} in CI. Published on crates.io (\faStar\ 40).
 \end{minipage}\par
 
-\iconentry{icons/markii.png}{\tech{Markii} \textcolor{subtle}{$\cdot$ Component-based markdown format (TypeScript)}}{\href{https://github.com/sadigaxund/markii}{github.com/sadigaxund/markii} \textcolor{subtle}{$\cdot$ 2026}}
+\iconentry{icons/markii.png}{\tech{Markii} \textcolor{subtle}{$\cdot$ Component-based markdown format (TypeScript)}}{\href{https://github.com/markii-org/markii}{github.com/markii-org/markii} \textcolor{subtle}{$\cdot$ 2026}}
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Markdown that renders live components: notes stay plain CommonMark while directives add callouts, tabs, charts, and sandboxed \kw{Lua}-bound data that degrade gracefully in ordinary viewers. Shipped as an npm monorepo (\kw{@markii/react}, static HTML engine, VS Code extension) behind a written spec and a language-agnostic conformance corpus. \href{https://sadigaxund.github.io/markii-vault/}{Live playground}.
+    \small Markdown that renders live components: notes stay plain CommonMark while directives add callouts, tabs, charts, and sandboxed \kw{Lua}-bound data that degrade gracefully in ordinary viewers. Shipped as an npm monorepo with React and static HTML renderers plus a VS Code Marketplace extension, behind a written spec and a language-agnostic conformance corpus. \href{https://github.com/markii-org/markii-vault}{Live playground}.
 \end{minipage}\par
 
 %-------- CERTIFICATIONS --------
