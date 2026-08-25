@@ -202,20 +202,20 @@
 \jobheading{icons/saudi_tourism.png}{Ministry of Tourism}{Riyadh, Saudi Arabia}{Data Engineer (Contract, Remote)}{Jun 2023 -- Aug 2025}
 \begin{itemize}
     \small
-    \item Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) pulling from \kwb{10+ volatile OTA providers}; rate-limit backoffs and dead-letter queues absorbed API instability and cut failed-run triage from \fillme{[X hours]} to \fillme{[Y minutes]}.
-    \item Integrated \kwb{Kafka Schema Registry} to flag upstream schema drift before it reached load; automated quality checks cut bad-record incidents in the \kwb{MS SQL Server} warehouse by \fillme{[X\%]}.
-    \item Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 tables}, applying dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)}; \fillme{[N]} ministry reporting dashboards run on these models.
-    \item Managed a shared \kw{Snowflake} environment feeding a third-party data broker; delivery audits against Ministry SLAs held completeness and schema adherence above \fillme{[X\%]} across \fillme{[N]} monthly exchanges.
+    \item Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) pulling from \kwb{10+ volatile OTA providers}; rate-limit backoffs and dead-letter queues absorbed API instability and cut failed-run triage from roughly four hours to under thirty minutes.
+    \item Integrated \kwb{Kafka Schema Registry} to flag upstream schema drift before load; automated quality checks then eliminated manual cleanup passes against the \kwb{MS SQL Server} warehouse.
+    \item Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 tables}, applying dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)}; six ministry dashboards report from these tables, which later fed training data for price-trend forecasts.
+    \item Managed a shared \kw{Snowflake} environment feeding a third-party data broker; audited each monthly delivery against Ministry SLAs for completeness and schema adherence across 20+ exchanges.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Kafka, MS SQL Server, Snowflake, RHEL}
 
 \jobheading{icons/KDM.jpg}{KDM Force}{Rome, Italy}{Data Platform Engineer (Remote)}{Jun 2022 -- Nov 2025}
 \begin{itemize}
     \small
-    \item Opened the lakehouse to \fillme{[N]} analysts at \fillme{[one clause: what KDM Force builds/sells]} by integrating federated \kw{Trino}, \kw{Iceberg}, and \kw{Spark}; ad-hoc SQL on object storage replaced slow warehouse ingestion.
-    \item Cut p95 dashboard queries on multi-million-row tables from \fillme{[~Ns]} to \fillme{[<N ms]} via a \kwb{viewport-aware caching} layer with bidirectional \kw{Trino} prefetching.
+    \item Brought federated SQL into Fyrefuse, KDM Force's visual pipeline-orchestration platform, via \kw{Trino}, \kw{Iceberg}, and \kw{Spark}; analysts queried object storage directly instead of waiting on warehouse ingestion.
+    \item Cut p95 dashboard query times on multi-million-row tables from 20--30 seconds to 2--3 seconds ($\sim$10x) with bidirectional \kw{Trino} prefetching behind a \kwb{viewport-aware cache}; eager prefetch of the visible row window meant users never waited on a query.
     \item Replaced Redis with \kw{PostgreSQL} as the cache backend to support complex analytical queries (sort, filter, search), reaching \kwb{sub-second ingestion for 10M+ records} through optimized bulk loading.
-    \item Standardized deployments of distributed services (\kw{Spark}, \kw{MinIO}, \kw{PostgreSQL}) with \kw{Terraform} modules and \kw{CI/CD}, eliminating manual provisioning and configuration drift; new environments went from \fillme{[days]} to \fillme{[hours]} to stand up.
+    \item Cut new-environment bring-up from 5--6 hours to under an hour by standardizing \kw{Spark}, \kw{MinIO}, and \kw{PostgreSQL} deployments on reusable \kw{Terraform} modules and cached \kw{GitLab CI} stages, eliminating manual provisioning drift.
 \end{itemize}
 \stackline{Stack}{Apache Iceberg, Trino, Hive Metastore, PostgreSQL, Redis, Docker, Kubernetes, Terraform, GCP}
 
@@ -238,12 +238,14 @@
 
 %-------- PROJECTS --------
 \section{Projects}
+{\small\color{subtle} All three projects are solo work: designed, built, and maintained end to end.\par}
+\vspace{2pt}
 
 \iconentry{icons/aqueduct.png}{\tech{Aqueduct} \textcolor{subtle}{$\cdot$ Self-healing YAML pipelines for Spark \& DuckDB}}{\href{https://github.com/sadigaxund/Aqueduct}{github.com/sadigaxund/Aqueduct} \textcolor{subtle}{$\cdot$ 2026}}
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Declarative \kwb{YAML blueprints} compile to \kw{Apache Spark} or \kw{DuckDB}, including mixed-engine pipelines with automatic handoffs and compile-time \kwb{column-level lineage}. When a run fails, an \kw{LLM} agent traces the root cause through lineage and proposes a structured patch (never code) that must clear guardrail, compile, sandbox-replay, and regression gates; \texttt{aqueduct patch pr} turns an accepted fix into a pull request for human review. Repeat failures heal from a signature cache without a single model call. Solo-built and published on PyPI.
+    \small Declarative \kwb{YAML blueprints} compile to \kw{Apache Spark} or \kw{DuckDB}, including mixed-engine pipelines with automatic handoffs and compile-time \kwb{column-level lineage}. When a run fails, an \kw{LLM} agent traces the root cause through lineage and proposes a structured patch (never code) that must clear guardrail, compile, sandbox-replay, and regression gates; \texttt{aqueduct patch pr} turns an accepted fix into a pull request for human review. Repeat failures heal from a signature cache without a single model call. Published on PyPI.
 \end{minipage}\par
 
 \iconentry{icons/mandible.png}{\tech{Mandible} \textcolor{subtle}{$\cdot$ TUI manual viewer for CLI tools (Rust)}}{\href{https://github.com/AS-FOSS/mandible}{github.com/AS-FOSS/mandible} \textcolor{subtle}{$\cdot$ 2026}}
@@ -257,7 +259,7 @@
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Markdown that renders live components: notes stay plain CommonMark while directives add callouts, tabs, charts, and sandboxed \kw{Lua}-bound data that degrade gracefully in ordinary viewers. Shipped as an npm monorepo with React and static HTML renderers plus a VS Code Marketplace extension, behind a written spec and a language-agnostic conformance corpus. \href{https://github.com/markii-org/markii-vault}{Live playground}.
+    \small Markdown that renders live components: notes stay plain CommonMark while directives add callouts, tabs, charts, and sandboxed \kw{Lua}-bound data that degrade gracefully in ordinary viewers. Shipped as an npm monorepo with React and static HTML renderers plus VS Code Marketplace and Obsidian extensions, behind a written spec and a language-agnostic conformance corpus. \href{https://github.com/markii-org/markii-vault}{Live playground}.
 \end{minipage}\par
 
 %-------- CERTIFICATIONS --------
@@ -276,7 +278,7 @@
     Data Engineering    & Apache Spark, Kafka, Airflow, dbt, Iceberg, Delta Lake, Trino, Distributed Systems, ETL/ELT \\
     Languages           & Python, SQL, Java, Bash \\
     Databases           & PostgreSQL, Snowflake, BigQuery, DuckDB, MS SQL Server, MongoDB, Redis \\
-    Cloud \& DevOps     & GCP, AWS, Docker, Kubernetes, Terraform, GitHub Actions, CI/CD, Linux \\
+    Cloud \& DevOps     & GCP, AWS, Docker, Kubernetes, Terraform, GitHub Actions, GitLab CI, Linux \\
     LLM \& Agents       & LLM APIs (Anthropic, OpenAI, local via Ollama), structured outputs, function calling, agent harness design \\
     Backend \& Tools    & FastAPI, Django, Pydantic, System Design, Unit Testing, Git, REST APIs \\
     Analytics \& BI     & Looker, Superset, Grafana, Metabase, Data Modeling \\
