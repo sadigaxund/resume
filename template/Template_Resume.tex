@@ -205,7 +205,7 @@
     \item Engineered resilient CDC-style \kw{Spark} pipelines (via Fyrefuse) pulling from \kwb{10+ volatile OTA providers}; rate-limit backoffs and dead-letter queues absorbed API instability and cut failed-run triage from roughly four hours to under thirty minutes.
     \item Integrated \kwb{Kafka Schema Registry} to flag upstream schema drift before load; automated quality checks then eliminated manual cleanup passes against the \kwb{MS SQL Server} warehouse.
     \item Architected the warehouse schema for \kwb{80M+ customer reviews} and multi-year listing metadata across \kwb{18 tables}, applying dimensional modeling and \kwb{Slowly Changing Dimensions (SCDs)}; six ministry dashboards report from these tables, which later fed training data for price-trend forecasts.
-    \item Managed a shared \kw{Snowflake} environment feeding a third-party data broker; audited each monthly delivery against Ministry SLAs for completeness and schema adherence across 20+ exchanges.
+    \item Managed a shared \kw{Snowflake} environment feeding a third-party data broker; audited every monthly delivery against Ministry SLAs for completeness and schema adherence for over two years.
 \end{itemize}
 \stackline{Stack}{Apache Spark, Kafka, MS SQL Server, Snowflake, RHEL}
 
@@ -252,7 +252,7 @@
 \par\vspace{3pt}
 \noindent\hspace*{\bodyindent}%
 \begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Renders any installed CLI's commands, flags, and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework generated a tool's output (\kw{clap}, \kw{cobra}, \kw{argparse}, \kw{click}) and applies that grammar, scoring parse coverage against every executable on \texttt{PATH} in CI. Published on crates.io (\faStar\ 40).
+    \small Renders any installed CLI's commands, flags, and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework generated a tool's output (\kw{clap}, \kw{cobra}, \kw{argparse}, \kw{click}) and applies that grammar, scoring parse coverage against every executable on \texttt{PATH} in CI. Published on crates.io.
 \end{minipage}\par
 
 \iconentry{icons/markii.png}{\tech{Markii} \textcolor{subtle}{$\cdot$ Component-based markdown format (TypeScript)}}{\href{https://github.com/markii-org/markii}{github.com/markii-org/markii} \textcolor{subtle}{$\cdot$ 2026}}
