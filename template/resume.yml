@@ -1,5 +1,5 @@
-variant: DataEngineer
-label: "Software Engineer, Data"
+variant: devops-engineer
+label: "DevOps Engineer"
 author: "Sadig Akhund"
 template: "Template_Resume.tex"
-output: "SadigAkhund_DataEngineer_Resume"
+output: "SadigAkhund_DevOps_Resume"
