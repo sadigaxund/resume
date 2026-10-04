@@ -133,6 +133,22 @@
   \vspace{-2pt}
 }
 
+% Project entry: logo on the left, title row top-aligned with the logo, body directly beneath
+% #1=icon  #2=title  #3=right-side text  #4=body
+\newcommand{\projentry}[4]{%
+  \vspace{10pt}
+  \noindent
+  \begin{minipage}[t]{\bodyindent}
+    \vspace{0pt}\centering
+    \logobox{#1}
+  \end{minipage}%
+  \begin{minipage}[t]{\dimexpr\textwidth-\bodyindent}
+    \vspace{0pt}
+    #2\hfill\textcolor{subtle}{#3}\par\vspace{3pt}
+    {\small #4\par}
+  \end{minipage}\par
+}
+
 \newcommand{\projheading}[2]{%
   \vspace{2pt}
   \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
@@ -194,29 +210,29 @@
 
 %-------- SUMMARY (no header — flows from contact block) --------
 \vspace{6pt}
-{\small Engineer with 3+ years running Linux infrastructure and delivery pipelines behind data platforms. Owned the RHEL environment, network segmentation and incident response for a government data platform, and co-ran the cloud VMs and \kwb{GitLab CI/CD} for a product team. Also runs a self-hosted home server that the whole family uses.\par}
+{\small Infrastructure engineer with 3+ years running Linux servers and delivery pipelines behind data platforms. Owned the RHEL environment, network segmentation and incident response for a government data platform, and ran the cloud VMs and \kwb{GitLab CI/CD} for a product team. Also runs a self-hosted homelab that the whole family uses.\par}
 
 %-------- EXPERIENCE --------
 \section{Experience}
 
-\jobheading{icons/saudi_tourism.png}{Ministry of Tourism}{Riyadh, Saudi Arabia}{Data Engineer (Contract, Remote)}{Jun 2023 -- Sep 2025}
+\jobheading{icons/saudi_tourism.png}{Ministry of Tourism}{Riyadh, Saudi Arabia}{Data Infrastructure Engineer (Contract, Remote)}{Jun 2023 -- Sep 2025}
 \begin{itemize}
     \small
-    \item Owned deployments on four \kw{RHEL} VMs in the Ministry's \kw{VMware} environment: a DMZ node running all extraction jobs (Python API clients and scrapers), a control node hosting the Spark master, orchestration and monitoring, and two \kw{Spark} workers.
-    \item Split the network into isolated subnets with \kwb{least-privilege firewall rules}: the DMZ node had outbound HTTP only plus one channel to the control node, and the cluster's only route out was the \kw{JDBC} port to the Ministry warehouse.
-    \item Handled production incidents across \kwb{10+ unstable OTA provider APIs}; rate-limit backoffs and dead-letter queues contained the failures and cut triage from about four hours to under thirty minutes.
-    \item Built \kw{Superset} dashboards tracking pipeline state, data volume and quality, and added \kwb{Kafka Schema Registry} to catch upstream schema changes before load.
-    \item Kept every raw extract in an immutable \kw{Parquet} staging layer, so a failed or corrupted load could be replayed from stored data without calling the providers again.
+    \item Owned deployments on four \kw{RHEL} VMs in the Ministry's \kw{VMware} environment. A DMZ node ran the extraction jobs, a control node hosted orchestration and monitoring, and two workers ran the \kw{Spark} cluster.
+    \item Split the network into isolated subnets with \kwb{least-privilege firewall rules}. The DMZ node could only call out over HTTP and reach the control node, and the cluster's only route out was the \kw{JDBC} port to the Ministry warehouse.
+    \item Handled production incidents across \kwb{10+ unstable OTA provider APIs}. Rate-limit backoffs and dead-letter queues contained the failures and cut triage from about four hours to under thirty minutes.
+    \item Set up pipeline monitoring in \kw{Superset} for run state, data volume and quality, and used \kwb{Kafka Schema Registry} to catch upstream schema changes before load.
+    \item Kept every raw extract in an immutable \kw{Parquet} staging layer, so any failed or corrupted load could be replayed without calling the providers again.
 \end{itemize}
 \stackline{Stack}{RHEL, VMware, Apache Spark, Kafka, Superset, MS SQL Server, Snowflake, Python, Bash}
 
 \jobheading{icons/KDM.jpg}{KDM Force}{Rome, Italy}{Data Platform Engineer (Remote)}{Jun 2022 -- Nov 2025}
 \begin{itemize}
     \small
-    \item Co-managed \kwb{5--7 Hetzner Cloud VMs} with one other engineer, hosting the platform's dev and production environments, its public website and a demo playground.
-    \item Ran the \kwb{GitLab CI/CD} workflow for a five-person team: merge requests went through code review, \kw{pytest} backend suites and \kw{Playwright} end-to-end tests, then deployed to dev automatically; releases reached production after smoke testing.
+    \item Ran \kwb{5--7 Hetzner Cloud VMs} hosting the platform's dev and production environments, public website and demo playground.
+    \item Built the \kwb{GitLab CI/CD} workflow for a five-person team. Every merge request passed code review, \kw{pytest} suites and \kw{Playwright} end-to-end tests before deploying to dev automatically, and releases went to production after smoke testing.
     \item Cut new-environment bring-up from 5--6 hours to under an hour by moving \kw{Spark}, \kw{MinIO} and \kw{PostgreSQL} deployments onto reusable \kw{Terraform} modules and cached CI stages.
-    \item Built the platform's backend integrations with \kw{Trino} and \kw{Iceberg}, and cut p95 dashboard query time on multi-million-row tables from 20--30 seconds to 2--3 seconds with a \kw{PostgreSQL}-backed cache.
+    \item Built backend integrations with \kw{Trino} and \kw{Iceberg}, plus a \kw{PostgreSQL}-backed cache that cut dashboard load time on multi-million-row tables from 20--30 seconds to 2--3 seconds.
 \end{itemize}
 \stackline{Stack}{GitLab CI, Docker, Terraform, Hetzner Cloud, Linux, pytest, Playwright, PostgreSQL, Trino, Iceberg}
 
@@ -242,34 +258,11 @@
 {\small\color{subtle} All three projects are solo work: designed, built, and maintained end to end.\par}
 \vspace{2pt}
 
-\iconentry{icons/homelab.png}{\tech{Home Server} \textcolor{subtle}{$\cdot$ Self-hosted services for family use}}{\textcolor{subtle}{Ongoing}}
-\par\vspace{3pt}
-\noindent\hspace*{\bodyindent}%
-\begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small A \kw{TrueNAS} server on two mirrored 4\,TB drives (\kw{ZFS}) running Jellyfin, Immich, Nextcloud, Booklore, SearXNG and AdGuard Home, plus a custom-built music manager that downloads tracks with yt-dlp, tags them and adds them to the Jellyfin library. Every family member has an account, and the TVs at home stream from it. Apps are published through \kwb{Cloudflare Tunnels} with no inbound ports open; \kw{Terraform} keeps the DNS records, tunnel routes and \kwb{Cloudflare Access} policies, so private apps sit behind Google sign-in with 2FA. API tokens live in \kwb{HashiCorp Vault}. Data is protected by scheduled ZFS snapshots and a weekly offsite copy.
-\end{minipage}\par
+\projentry{icons/homelab.png}{\tech{Homelab} \textcolor{subtle}{$\cdot$ Self-hosted services for family use}}{Ongoing}{A \kw{TrueNAS} server on two mirrored 4\,TB \kw{ZFS} drives running Jellyfin, Immich, Nextcloud, Booklore, SearXNG and AdGuard Home, plus a custom-built music manager that downloads tracks with yt-dlp, tags them and adds them to the Jellyfin library. Every family member has an account, and the TVs at home stream from it. Apps are published through \kwb{Cloudflare Tunnels} with no inbound ports open. \kw{Terraform} keeps the DNS records, tunnel routes and \kwb{Cloudflare Access} policies, so private apps sit behind Google sign-in with 2FA. API tokens live in \kwb{HashiCorp Vault}, and data is protected by scheduled ZFS snapshots and a weekly offsite copy.}
 
-\iconentry{icons/git-resume.png}{\tech{git-resume} \textcolor{subtle}{$\cdot$ Release pipeline for this resume}}{\href{https://github.com/AS-FOSS/git-resume}{github.com/AS-FOSS/git-resume} \textcolor{subtle}{$\cdot$ 2026}}
-\par\vspace{3pt}
-\noindent\hspace*{\bodyindent}%
-\begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Built the pipeline that produced this PDF. A \kwb{GitHub Actions} job compiles the LaTeX source inside a cached \kw{Docker} image (keyed on the registry digest), publishes versioned releases per branch with \kw{SHA-256} change detection, and deploys a viewer to \kwb{GitHub Pages}. Each tailored resume lives on its own branch and builds independently.
-\end{minipage}\par
+\projentry{icons/git-resume.png}{\tech{git-resume} \textcolor{subtle}{$\cdot$ Release pipeline for this resume}}{\href{https://github.com/AS-FOSS/git-resume}{github.com/AS-FOSS/git-resume} \textcolor{subtle}{$\cdot$ 2026}}{Built the pipeline that produced this PDF. A \kwb{GitHub Actions} job compiles the LaTeX source inside a \kw{Docker} image cached by registry digest, publishes versioned releases per branch with \kw{SHA-256} change detection, and deploys a viewer to \kwb{GitHub Pages}. Each tailored resume lives on its own branch and builds independently.}
 
-\iconentry{icons/mandible.png}{\tech{Mandible} \textcolor{subtle}{$\cdot$ TUI manual viewer for CLI tools (Rust)}}{\href{https://github.com/AS-FOSS/mandible}{github.com/AS-FOSS/mandible} \textcolor{subtle}{$\cdot$ 2026}}
-\par\vspace{3pt}
-\noindent\hspace*{\bodyindent}%
-\begin{minipage}[t]{\dimexpr\linewidth-\bodyindent}
-    \small Renders any installed CLI's commands, flags, and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework generated a tool's output (\kw{clap}, \kw{cobra}, \kw{argparse}, \kw{click}) and applies that grammar, scoring parse coverage against every executable on \texttt{PATH} in CI. Published on crates.io. 200+ stars.
-\end{minipage}\par
-
-%-------- CERTIFICATIONS --------
-\needspace{5\baselineskip}
-\section{Certifications}
-
-\iconentry{icons/google.png}{\tech{Google Data Analytics Professional Certificate} \textcolor{subtle}{$\cdot$} \href{https://www.credly.com/badges/de618cee-0460-4d61-971b-2813931eb9c0/public_url}{Verify on Credly}}{Apr 2022}
-\vspace{4pt}
-
+\projentry{icons/mandible.png}{\tech{Mandible} \textcolor{subtle}{$\cdot$ TUI manual viewer for CLI tools in Rust}}{\href{https://github.com/AS-FOSS/mandible}{github.com/AS-FOSS/mandible} \textcolor{subtle}{$\cdot$ 2026}}{Renders any installed CLI's commands, flags and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework produced a tool's output, such as \kw{clap}, \kw{cobra}, \kw{argparse} or \kw{click}, applies that grammar, and scores parse coverage against every executable on \texttt{PATH} in CI. Published on crates.io with 200+ stars.}
 
 %-------- SKILLS --------
 \needspace{8\baselineskip}
