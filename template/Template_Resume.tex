@@ -220,7 +220,7 @@
     \small
     \item Owned deployments on four \kw{RHEL} VMs in the Ministry's \kw{VMware} environment. A DMZ node ran the extraction jobs, a control node hosted orchestration and monitoring, and two workers ran the \kw{Spark} cluster.
     \item Split the network into isolated subnets with \kwb{least-privilege firewall rules}. The DMZ node could only call out over HTTP and reach the control node, and the cluster's only route out was the \kw{JDBC} port to the Ministry warehouse.
-    \item Handled production incidents across \kwb{10+ unstable OTA provider APIs}. Rate-limit backoffs and dead-letter queues contained the failures and cut triage from about four hours to under thirty minutes.
+    \item Handled production incidents across \kwb{10+ unstable OTA provider APIs}. Rate-limit backoffs and dead-letter queues contained the failures and cut triage from about 4 hours to 30 minutes.
     \item Set up pipeline monitoring in \kw{Superset} for run state, data volume and quality, and used \kwb{Kafka Schema Registry} to catch upstream schema changes before load.
     \item Kept every raw extract in an immutable \kw{Parquet} staging layer, so any failed or corrupted load could be replayed without calling the providers again.
     \item Wrote the runbooks and handover documentation for deployment, recovery and the network layout when the platform moved into steady-state maintenance.
@@ -272,8 +272,6 @@
 
 %-------- PROJECTS --------
 \section{Projects}
-{\small\color{subtle} All three projects are solo work: designed, built, and maintained end to end.\par}
-\vspace{2pt}
 
 \projentry{icons/homelab.png}{\tech{Homelab} \textcolor{subtle}{$\cdot$ Self-hosted services for family use}}{Ongoing}{A \kw{TrueNAS} server on two mirrored 4\,TB \kw{ZFS} drives running Jellyfin, Immich, Nextcloud, Booklore, SearXNG and AdGuard Home, plus a custom-built music manager that downloads tracks with yt-dlp, tags them and adds them to the Jellyfin library. Every family member has an account, and the TVs at home stream from it. Apps are published through \kwb{Cloudflare Tunnels} with no inbound ports open. \kw{Terraform} keeps the DNS records, tunnel routes and \kwb{Cloudflare Access} policies, so private apps sit behind Google sign-in with 2FA. API tokens live in \kwb{HashiCorp Vault}, and data is protected by scheduled ZFS snapshots and a weekly offsite copy.}
 
