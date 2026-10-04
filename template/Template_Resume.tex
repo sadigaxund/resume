@@ -210,7 +210,7 @@
 
 %-------- SUMMARY (no header — flows from contact block) --------
 \vspace{6pt}
-{\small Infrastructure engineer with 3+ years running Linux servers and delivery pipelines behind data platforms. Owned the RHEL environment, network segmentation and incident response for a government data platform, and ran the cloud VMs and \kwb{GitLab CI/CD} for a product team. Also runs a self-hosted homelab that the whole family uses.\par}
+{\small Infrastructure engineer with 3+ years running Linux servers and delivery pipelines behind data platforms. Owned the RHEL environment, network segmentation and incident response for a government data platform, and ran the cloud VMs, \kwb{GitLab CI/CD} and \kw{Terraform} setup for a product team. Also runs a self-hosted homelab that the whole family uses.\par}
 
 %-------- EXPERIENCE --------
 \section{Experience}
@@ -223,6 +223,7 @@
     \item Handled production incidents across \kwb{10+ unstable OTA provider APIs}. Rate-limit backoffs and dead-letter queues contained the failures and cut triage from about four hours to under thirty minutes.
     \item Set up pipeline monitoring in \kw{Superset} for run state, data volume and quality, and used \kwb{Kafka Schema Registry} to catch upstream schema changes before load.
     \item Kept every raw extract in an immutable \kw{Parquet} staging layer, so any failed or corrupted load could be replayed without calling the providers again.
+    \item Wrote the runbooks and handover documentation for deployment, recovery and the network layout when the platform moved into steady-state maintenance.
 \end{itemize}
 \stackline{Stack}{RHEL, VMware, Apache Spark, Kafka, Superset, MS SQL Server, Snowflake, Python, Bash}
 
@@ -253,6 +254,22 @@
 
 \newpage
 
+%-------- SKILLS --------
+\needspace{8\baselineskip}
+\section{Skills}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries\color{accent}}l >{\raggedright\arraybackslash}X@{}}
+    Linux \& Networking & RHEL, TrueNAS, systemd, Bash, SSH, TCP/IP, DNS, subnetting, firewall rules, Nginx reverse proxy and load balancing, Cloudflare Tunnels, Twingate \\
+    Containers \& IaC   & Docker, Docker Compose, Kubernetes (k3s), Helm, Terraform, Ansible, Portainer \\
+    CI/CD \& GitOps     & GitLab CI, Argo CD, GitHub Actions, Git, code review workflows, pytest, Playwright \\
+    Cloud \& Virtualization & Hetzner Cloud, GCP, AWS, VMware-hosted environments \\
+    Monitoring \& Logging & Prometheus, Alertmanager, Grafana, Loki, Sentry, ELK (Elasticsearch, Logstash, Kibana), Superset \\
+    Security \& Backup   & HashiCorp Vault, Cloudflare Access, least-privilege firewalling, ZFS snapshots, offsite backups \\
+    Programming         & Python, Bash, SQL, Java \\
+    Data Platforms      & Apache Spark, Kafka, Trino, Iceberg, PostgreSQL, Snowflake, MS SQL Server, MinIO \\
+    Spoken Languages    & Azerbaijani (Native), English (Proficient), Russian (Advanced) \\
+\end{tabularx}
+
 %-------- PROJECTS --------
 \section{Projects}
 {\small\color{subtle} All three projects are solo work: designed, built, and maintained end to end.\par}
@@ -264,20 +281,5 @@
 
 \projentry{icons/mandible.png}{\tech{Mandible} \textcolor{subtle}{$\cdot$ TUI manual viewer for CLI tools in Rust}}{\href{https://github.com/AS-FOSS/mandible}{github.com/AS-FOSS/mandible} \textcolor{subtle}{$\cdot$ 2026}}{Renders any installed CLI's commands, flags and docs as an explorable tree instead of hand-maintained pages. It detects which help-text framework produced a tool's output, such as \kw{clap}, \kw{cobra}, \kw{argparse} or \kw{click}, applies that grammar, and scores parse coverage against every executable on \texttt{PATH} in CI. Published on crates.io with 200+ stars.}
 
-%-------- SKILLS --------
-\needspace{8\baselineskip}
-\section{Skills}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabularx}{\textwidth}{@{}>{\bfseries\color{accent}}l >{\raggedright\arraybackslash}X@{}}
-    Linux \& Networking & RHEL, TrueNAS, systemd, Bash, SSH, TCP/IP, DNS, subnetting, firewall rules, Cloudflare Tunnels, Twingate \\
-    Containers \& IaC   & Docker, Docker Compose, Kubernetes (k3s), Helm, Terraform, Ansible, Portainer \\
-    CI/CD \& GitOps     & GitLab CI, Argo CD, GitHub Actions, Git, code review workflows, pytest, Playwright \\
-    Cloud \& Virtualization & Hetzner Cloud, GCP, AWS, VMware-hosted environments \\
-    Monitoring \& Logging & Prometheus, Alertmanager, Grafana, Loki, Sentry, ELK (Elasticsearch, Logstash, Kibana), Superset \\
-    Security \& Backup   & HashiCorp Vault, Cloudflare Access, least-privilege firewalling, ZFS snapshots, offsite backups \\
-    Programming         & Python, Bash, SQL, Java \\
-    Data Platforms      & Apache Spark, Kafka, Trino, Iceberg, PostgreSQL, Snowflake, MS SQL Server, MinIO \\
-    Spoken Languages    & Azerbaijani (Native), English (Proficient), Russian (Advanced) \\
-\end{tabularx}
 
 \end{document}
